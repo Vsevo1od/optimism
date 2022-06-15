@@ -25,7 +25,7 @@ contract L2OutputOracle is Ownable {
     /**
      * @notice Emitted when an output is appended.
      */
-    event l2OutputAppended(
+    event L2OutputAppended(
         bytes32 indexed _l2Output,
         uint256 indexed _l1Timestamp,
         uint256 indexed _l2BlockNumber
@@ -34,7 +34,7 @@ contract L2OutputOracle is Ownable {
     /**
      * @notice Emitted when an output is deleted.
      */
-    event l2OutputDeleted(
+    event L2OutputDeleted(
         bytes32 indexed _l2Output,
         uint256 indexed _l1Timestamp,
         uint256 indexed _l2BlockNumber
@@ -135,7 +135,7 @@ contract L2OutputOracle is Ownable {
         l2Outputs[_l2BlockNumber] = OutputProposal(_l2Output, block.timestamp);
         latestBlockNumber = _l2BlockNumber;
 
-        emit l2OutputAppended(_l2Output, block.timestamp, _l2BlockNumber);
+        emit L2OutputAppended(_l2Output, block.timestamp, _l2BlockNumber);
     }
 
     /**
@@ -155,7 +155,7 @@ contract L2OutputOracle is Ownable {
             "OutputOracle: The timestamp to delete does not match the latest output proposal."
         );
 
-        emit l2OutputDeleted(
+        emit L2OutputDeleted(
             outputToDelete.outputRoot,
             outputToDelete.timestamp,
             latestBlockNumber
